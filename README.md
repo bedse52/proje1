@@ -31,7 +31,7 @@ Kullanılan Teknolojiler
 }
     ```
 - `GET /rest/apiproduct/list`: Ürün listesini getirir sonuna `/{productId}` eklenirse spesifik ürün gelir.
-- `DEL /rest/api/product/delete/{productId}`: Ürün silinir.
+- `DELETE /rest/api/product/delete/{productId}`: Ürün silinir.
 - `PUT /rest/api/product/update/{productId}`: "Ürün güncellenir.
 - Request Body:
     ```json
