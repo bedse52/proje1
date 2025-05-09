@@ -21,7 +21,7 @@ Kullanılan Teknolojiler
     }
     ```
 ### Product İşlemleri
--`POST /rest/apiproduct/save`: Yeni ürün oluşturur.
+- `POST /rest/apiproduct/save`: Yeni ürün oluşturur.
 - Request Body:
     ```json
     {
@@ -30,9 +30,9 @@ Kullanılan Teknolojiler
     "stock" :  100
 }
     ```
--`GET /rest/apiproduct/list`: Ürün listesini getirir sonuna `/{productId}` eklenirse spesifik ürün gelir.
--`DEL /rest/api/product/delete/{productId}`: Ürün silinir.
--`PUT /rest/api/product/update/{productId}`: "Ürün güncellenir.
+- `GET /rest/apiproduct/list`: Ürün listesini getirir sonuna `/{productId}` eklenirse spesifik ürün gelir.
+- `DEL /rest/api/product/delete/{productId}`: Ürün silinir.
+- `PUT /rest/api/product/update/{productId}`: "Ürün güncellenir.
 - Request Body:
     ```json
    {
