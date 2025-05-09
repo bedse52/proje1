@@ -10,7 +10,7 @@ Kullanılan Teknolojiler
 - PostgreSQL
 - Lombok
   
-## 📬 API Endpointleri
+## API Endpointleri
 
 ### Customer İşlemleri
 -`POST /rest/apicustomer/save`: Yeni kullanıcı oluşturur.
@@ -63,7 +63,7 @@ Kullanılan Teknolojiler
 - `PUT /rest/api/cart/update/{customerId}`:  Sepette tomplam fiyat-ürün uyuşmazlığı olursa giderir, ürünlerin fiyatı değişmiş ise sepetteki fiyatları günceller.
 
 
-### 📦 Order İşlemleri
+### Order İşlemleri
 
 - `POST /rest/api/order/place/{customerId}`: Kullanıcının sepetindeki ürünlerle sipariş oluşturur.
   - Sipariş oluşturulmadan önce:
@@ -76,9 +76,9 @@ Kullanılan Teknolojiler
 - `GET /rest/api/order/{orderCode}`: Belirli kodla siparişi getirir.
 - `GET /rest/api/order/list/{customerId}`: Kullanıcının tüm siparişlerini getirir.
 
-## 🧪 Test
+## Test
 Postman ile test edildi. Endpointler başarılı şekilde veri tabanında karşılık bulmaktadır.
 
-## 📌 Notlar
+##  Notlar
 - Sipariş kodu `"AAAA"`, `"AAAB"` şeklinde otomatik artmaktadır.
 - Ürün fiyat takip tablosu arkaplanda tutulur. Fiyat güncellendikçe tabloya yeni veri girilir.
