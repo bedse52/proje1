@@ -13,7 +13,7 @@ Kullanılan Teknolojiler
 ## 📬 API Endpointleri
 
 ### Customer İşlemleri
-`POST customer/save`: Yeni kullanıcı oluşturur.
+-`POST /rest/apicustomer/save`: Yeni kullanıcı oluşturur.
 - Request Body:
     ```json
     {
@@ -21,13 +21,29 @@ Kullanılan Teknolojiler
     }
     ```
 ### Product İşlemleri
-`POST customer/save`: Yeni kullanıcı oluşturur.
-`GET customer/save`: Yeni kullanıcı oluşturur.
-`DEL customer/save`: Yeni kullanıcı oluşturur.
-`PULL customer/save`: Yeni kullanıcı oluşturur.
+-`POST /rest/apiproduct/save`: Yeni ürün oluşturur.
+- Request Body:
+    ```json
+    {
+    "name" : "Krampon",
+    "price" : 4699.99,
+    "stock" :  100
+}
+    ```
+-`GET /rest/apiproduct/list`: Ürün listesini getirir sonuna `/{productId}` eklenirse spesifik ürün gelir.
+-`DEL /rest/api/product/delete/{productId}`: Ürün silinir.
+-`PUT /rest/api/product/update/{productId}`: "Ürün güncellenir.
+- Request Body:
+    ```json
+   {
+    "name" : "Krampon",
+    "price" : 4499.99,
+    "stock" :  100
+}
+    ```
 ### Cart İşlemleri
-
-- `POST /cart/add`: Sepete ürün ekler.
+- `GET /rest/api/cart/{customerId}`: Kullanıcının sepetini getirir.
+- `POST /rest/api/cart/add/{customerId}`: Sepete ürün ekler.
   - Request Body:
     ```json
     {
@@ -35,25 +51,34 @@ Kullanılan Teknolojiler
       "quantity": 2
     }
     ```
-- `DELETE /cart/remove/{inCartId}`: Ürünü sepetten siler.
-- `PUT /cart/removeQuantity`: Ürünün miktarını azaltır.
-- `GET /cart/{customerId}`: Kullanıcının sepetini getirir.
+- `PATCH /rest/api/cart/remove/{customerId}`: Girilen "quantity"miktarına göre ürünü sepetten siler veya ürünün miktarını azaltır.
+  - Request Body:
+    ```json
+    {
+      "productId": 1,
+      "quantity": 2
+    }
+    ``` 
+- `DELETE /rest/api/cart/empty/{customerId}`: Sepeyi boşaltır.
+- `PUT /rest/api/cart/update/{customerId}`:  Sepette tomplam fiyat-ürün uyuşmazlığı olursa giderir, ürünlerin fiyatı değişmiş ise sepetteki fiyatları günceller.
+
 
 ### 📦 Order İşlemleri
 
-- `POST /order/place/{customerId}`: Kullanıcının sepetindeki ürünlerle sipariş oluşturur.
+- `POST /rest/api/order/place/{customerId}`: Kullanıcının sepetindeki ürünlerle sipariş oluşturur.
   - Sipariş oluşturulmadan önce:
+    - Sepet kontrolü yapılır (Boş mu dolu mu/ Fiyatlar güncel mi).
     - Stok kontrolü yapılır.
     - Yeterli stok varsa sipariş oluşturulur.
     - Sipariş oluşturulunca ürün stoğundan düşülür.
     - Sepet temizlenir.
 
-- `GET /order/code/{orderCode}`: Belirli kodla siparişi getirir.
-- `GET /order/customer/{customerId}`: Kullanıcının tüm siparişlerini getirir.
+- `GET /rest/api/order/{orderCode}`: Belirli kodla siparişi getirir.
+- `GET /rest/api/order/list/{customerId}`: Kullanıcının tüm siparişlerini getirir.
 
 ## 🧪 Test
 Postman ile test edildi. Endpointler başarılı şekilde veri tabanında karşılık bulmaktadır.
 
 ## 📌 Notlar
 - Sipariş kodu `"AAAA"`, `"AAAB"` şeklinde otomatik artmaktadır.
-- Ürün fiyatı değişse de sepetteki itemlerin fiyatı sabit kalır.
+- Ürün fiyat takip tablosu arkaplanda tutulur. Fiyat güncellendikçe tabloya yeni veri girilir.
