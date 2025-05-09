@@ -43,7 +43,7 @@ Kullanılan Teknolojiler
      {
     "name" : "Atkı",
     "price" : 199.99,
-    "stock" :  50
+    "stock" :  100
      }
     ```
   - ![product](https://github.com/user-attachments/assets/b7a428a7-ec52-450b-b542-64aae4e35a74)
