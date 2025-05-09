@@ -13,7 +13,7 @@ Kullanılan Teknolojiler
 ## API Endpointleri
 
 ### Customer İşlemleri
--`POST /rest/apicustomer/save`: Yeni kullanıcı oluşturur.
+-`POST /rest/apicustomer/save`: Yeni kullanıcı oluşturur. Buna bağlı olarak  kullanıcı ile ilişkili sepeti de oluşturur.
 - Request Body:
     ```json
     {
@@ -59,7 +59,7 @@ Kullanılan Teknolojiler
       "quantity": 2
     }
     ``` 
-- `DELETE /rest/api/cart/empty/{customerId}`: Sepeyi boşaltır.
+- `DELETE /rest/api/cart/empty/{customerId}`: Sepeti boşaltır. Databaseden müşterinin bağlı olduğu sepetteki tüm ürünleri InCart tablosundan siler.
 - `PUT /rest/api/cart/update/{customerId}`:  Sepette tomplam fiyat-ürün uyuşmazlığı olursa giderir, ürünlerin fiyatı değişmiş ise sepetteki fiyatları günceller.
 
 
@@ -82,3 +82,4 @@ Postman ile test edildi. Endpointler başarılı şekilde veri tabanında karş�
 ##  Notlar
 - Sipariş kodu `"AAAA"`, `"AAAB"` şeklinde otomatik artmaktadır.
 - Ürün fiyat takip tablosu arkaplanda tutulur. Fiyat güncellendikçe tabloya yeni veri girilir.
+- Tüm Entityler (Customer, Cart, Product vb) bir BaseEntityi miras alır idleri otomatik olarak oluşturulur. Oluşturulma ve güncellenme tarihleri tablolara kayıt edilir.
